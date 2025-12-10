@@ -1,0 +1,35 @@
+In the game, the player needs to match a country with its capital by clicking on appropriate button.
+
+Our Values
+
+Edify's engineering culture is as important to us as the skills of our developers. Being successful at Edify generally means that you feel aligned with these...
+
+We value excellence!
+Our team takes pride in their work and puts in the effort to build the very best product.
+
+We own what we do!
+Our customers rely on us to make their own businesses successful - if something doesn't work, we don't wait to be told; we fix it and move on to the next improvement.
+
+We all drive!
+We speak up when something's not right, ask for help when we're unsure and celebrate when we win (which is pretty often!).
+
+We focus on the customer!
+Sure, we're software engineers and our skills lie in our code, but we are constantly thinking about how our customers use Edify and prioritising their needs over our wants.
+
+Simple beats everything!
+There are many ways to solve problems, but we try hard not to over-engineer and instead think about the simplest solution and iterate.
+
+Every change is an improvement!
+We don't accept "move fast and break things" - everything we do makes our platform, the team or the code just a little better.
+
+We learn from our mistakes!
+When things go wrong, we're happy to jump in, put it right and then try and make sure it can't happen again.
+
+We are confident in our creations!
+Whatever our level, when we build things, we're confident in our ability to ship it to the customer problem-free.
+
+Refactoring is in our DNA!
+No system, process or codebase is perfect and we are happy to change things around to make it better.
+
+Instruction is optional!
+On our own, we take the initiative to make improvements. As a team, we support each other and build it even better

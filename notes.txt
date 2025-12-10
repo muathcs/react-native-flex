@@ -1,2 +1,0 @@
-In the game, the player needs to match a country with its capital by clicking on appropriate button.
-
