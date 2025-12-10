@@ -14,6 +14,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
     answer: "A JavaScript library for building user interfaces",
     difficulty: 1,
     nextShowTime: Date.now(),
+    explanation:
+      "React was created by Facebook and is used for building interactive UIs. It uses a component-based architecture and virtual DOM for efficient rendering.",
   },
   {
     id: 2,
@@ -22,6 +24,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
       "A syntax extension for JavaScript that allows you to write HTML-like code in JavaScript",
     difficulty: 1,
     nextShowTime: Date.now(),
+    explanation:
+      "JSX makes it easier to write and add HTML in React. It gets transpiled to regular JavaScript function calls by tools like Babel.",
   },
   {
     id: 3,
@@ -30,6 +34,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
       "Functions that allow you to use state and other React features in functional components",
     difficulty: 1,
     nextShowTime: Date.now(),
+    explanation:
+      "Hooks were introduced in React 16.8 to allow functional components to have state and lifecycle features that were previously only available in class components.",
   },
   {
     id: 4,
@@ -38,6 +44,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
       "A lightweight copy of the actual DOM that React uses to optimize rendering performance",
     difficulty: 2,
     nextShowTime: Date.now(),
+    explanation:
+      "The Virtual DOM is a JavaScript representation of the real DOM. React compares the virtual DOM with the previous version and only updates the parts that have changed, making updates more efficient.",
   },
   {
     id: 5,
@@ -46,6 +54,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
       "Props are read-only and passed from parent to child components, while state is mutable and managed within a component",
     difficulty: 2,
     nextShowTime: Date.now(),
+    explanation:
+      "Props (properties) are how components communicate with each other. State is internal to a component and can be changed, while props are immutable from the child component's perspective.",
   },
   {
     id: 6,
@@ -54,6 +64,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
       "To perform side effects in function components, such as data fetching, subscriptions, or DOM manipulation",
     difficulty: 2,
     nextShowTime: Date.now(),
+    explanation:
+      "useEffect replaces lifecycle methods like componentDidMount, componentDidUpdate, and componentWillUnmount in functional components. It runs after every render by default.",
   },
   {
     id: 7,
@@ -62,6 +74,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
       "A way to pass data through the component tree without manually passing props at every level",
     difficulty: 3,
     nextShowTime: Date.now(),
+    explanation:
+      "Context provides a way to share values between components without having to explicitly pass props through every level of the tree. It's designed to share data that can be considered 'global' for a tree of React components.",
   },
   {
     id: 8,
@@ -70,6 +84,8 @@ export const REACT_QUESTIONS: FlashCard[] = [
       "Special attributes used to help React identify which items have changed, been added, or been removed in lists",
     difficulty: 2,
     nextShowTime: Date.now(),
+    explanation:
+      "Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity.",
   },
   {
     id: 9,
@@ -171,6 +187,156 @@ export const REACT_QUESTIONS: FlashCard[] = [
     nextShowTime: Date.now(),
     explanation:
       "Fragment helps avoid unnecessary wrapper elements that can affect CSS styling and DOM structure. You can use <></> as shorthand for React.Fragment.",
+  },
+  {
+    id: 19,
+    question: "What is React Router and why is it used?",
+    answer:
+      "A library for handling client-side routing in React applications, enabling navigation between different views",
+    difficulty: 2,
+    nextShowTime: Date.now(),
+    explanation:
+      "React Router allows you to create single-page applications with multiple views. It synchronizes the UI with the URL and provides declarative routing.",
+  },
+  {
+    id: 20,
+    question: "What is the difference between class components and functional components?",
+    answer:
+      "Class components use ES6 classes and have lifecycle methods, while functional components are simpler functions that use hooks for state and effects",
+    difficulty: 2,
+    nextShowTime: Date.now(),
+    explanation:
+      "Functional components with hooks are now the preferred approach as they're simpler, more testable, and have better performance characteristics.",
+  },
+  {
+    id: 21,
+    question: "What is React StrictMode?",
+    answer:
+      "A development mode feature that helps identify potential problems in an application by running additional checks",
+    difficulty: 2,
+    nextShowTime: Date.now(),
+    explanation:
+      "StrictMode doesn't render any visible UI but activates additional checks and warnings for its descendants. It helps catch side effects and deprecated APIs.",
+  },
+  {
+    id: 22,
+    question: "What is the useReducer hook and when should you use it?",
+    answer:
+      "A hook for managing complex state logic, similar to Redux but for component-level state",
+    difficulty: 3,
+    nextShowTime: Date.now(),
+    explanation:
+      "useReducer is preferable to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one.",
+  },
+  {
+    id: 23,
+    question: "What is React.lazy() and how does it work?",
+    answer:
+      "A function that enables code splitting by allowing you to render dynamic imports as regular components",
+    difficulty: 3,
+    nextShowTime: Date.now(),
+    explanation:
+      "React.lazy() takes a function that must call a dynamic import() and returns a Promise that resolves to a module with a default export containing a React component.",
+  },
+  {
+    id: 24,
+    question: "What is the difference between createElement and JSX?",
+    answer:
+      "JSX is syntactic sugar that gets transpiled to React.createElement() calls",
+    difficulty: 2,
+    nextShowTime: Date.now(),
+    explanation:
+      "JSX makes code more readable and easier to write, but under the hood, it's converted to React.createElement() function calls by tools like Babel.",
+  },
+  {
+    id: 25,
+    question: "What are Higher-Order Components (HOCs)?",
+    answer:
+      "Functions that take a component and return a new component with additional props or behavior",
+    difficulty: 3,
+    nextShowTime: Date.now(),
+    explanation:
+      "HOCs are a pattern for reusing component logic. They're pure functions with no side effects and don't modify the input component.",
+  },
+  {
+    id: 26,
+    question: "What is the useContext hook?",
+    answer:
+      "A hook that allows you to consume context values without wrapping components in Context.Consumer",
+    difficulty: 2,
+    nextShowTime: Date.now(),
+    explanation:
+      "useContext accepts a context object and returns the current context value for that context, making it easier to consume context in functional components.",
+  },
+  {
+    id: 27,
+    question: "What is React reconciliation?",
+    answer:
+      "The process React uses to determine what changes need to be made to the DOM by comparing the current and previous virtual DOM trees",
+    difficulty: 3,
+    nextShowTime: Date.now(),
+    explanation:
+      "React uses a diffing algorithm to efficiently update the DOM. It compares elements by type and key to determine the minimal set of changes needed.",
+  },
+  {
+    id: 28,
+    question: "What are render props in React?",
+    answer:
+      "A technique for sharing code between components using a prop whose value is a function that returns a React element",
+    difficulty: 3,
+    nextShowTime: Date.now(),
+    explanation:
+      "Render props provide a way to share stateful logic between components. The component with the render prop calls the function instead of implementing its own render logic.",
+  },
+  {
+    id: 29,
+    question: "What is the difference between componentDidMount and useEffect?",
+    answer:
+      "componentDidMount runs once after mounting in class components, while useEffect can run after every render or with specific dependencies in functional components",
+    difficulty: 2,
+    nextShowTime: Date.now(),
+    explanation:
+      "useEffect with an empty dependency array ([]) mimics componentDidMount behavior, but useEffect is more flexible and can handle multiple lifecycle events.",
+  },
+  {
+    id: 30,
+    question: "What is React Fiber?",
+    answer:
+      "React's reconciliation algorithm that enables incremental rendering and better performance for complex applications",
+    difficulty: 3,
+    nextShowTime: Date.now(),
+    explanation:
+      "Fiber allows React to pause, abort, or reuse work as new updates come in. It enables features like time slicing and concurrent rendering.",
+  },
+  {
+    id: 31,
+    question: "What is the difference between shallow and deep comparison in React?",
+    answer:
+      "Shallow comparison checks if primitive values or object references are equal, while deep comparison checks the actual content of objects",
+    difficulty: 3,
+    nextShowTime: Date.now(),
+    explanation:
+      "React uses shallow comparison by default for performance. Deep comparison is more expensive but sometimes necessary for complex nested objects.",
+  },
+  {
+    id: 32,
+    question: "What is the purpose of the dependency array in useEffect?",
+    answer:
+      "To control when the effect runs by specifying which values it depends on",
+    difficulty: 2,
+    nextShowTime: Date.now(),
+    explanation:
+      "The dependency array tells React to only re-run the effect if one of the dependencies has changed. An empty array means the effect runs only once after mounting.",
+  },
+  {
+    id: 33,
+    question: "What is React DevTools and how is it useful?",
+    answer:
+      "A browser extension that provides debugging utilities for React applications, allowing inspection of component hierarchy and state",
+    difficulty: 1,
+    nextShowTime: Date.now(),
+    explanation:
+      "React DevTools helps developers inspect React component trees, view props and state, and profile performance. It's available as a browser extension for Chrome and Firefox.",
   },
 ];
 

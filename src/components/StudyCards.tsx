@@ -42,7 +42,7 @@ interface FlashCard {
 }
 
 function StudyCards() {
-  const [cards, setCards] = useState<FlashCard[]>(TYPESCRIPT_QUESTIONS);
+  const [cards, setCards] = useState<FlashCard[]>(NODE_JS_QUESTIONS);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
   const [questionsCompleted, setQuestionsCompleted] = useState(0); // Questions completed this session
