@@ -11,7 +11,7 @@ import BankSearchFilterCopy from "./components/BankSearchFilterCopy";
 import CountriesPagecopy from "./components/CountriesPagecopy";
 import CountryCapital from "./components/CountryCapital";
 import CountryCapitalcopy from "./components/CountryCapitalcopy";
-import Edify from "./components/Edify";
+import { ColorStatus } from "./components/Edify";
 
 // app!
 function App() {
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <Edify />
+      <ColorStatus />
       {/* <CountryCapitalcopy data={countryCapitalData} /> */}
     </>
   );

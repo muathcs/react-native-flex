@@ -1,0 +1,460 @@
+Question 1: Add typescript annotation to this 
+
+function add(a, b) {
+  return a + (b ?? 0);
+}
+
+
+answers
+
+/**
+ * Adds two numbers together.
+ * @param a - The first number to add
+ * @param b - The second number to add (optional, defaults to 0)
+ * @returns The sum of a and b
+ */
+function add(a: number, b?: number): number {
+  return a + (b ?? 0);
+}
+
+
+Question 2: 
+
+Set the comment to the value you expect to see printed by the console.log statement when the following function is executed.
+
+function joinArrays(arr1?: number[], arr2?: number[]) {
+  const result = arr1?.concat(arr2);
+  //
+  console.log(typeof result);
+  return result;
+}
+
+
+answers
+
+function joinArrays(arr1?: number[], arr2?: number[]) {
+  const result = arr1?.concat(arr2);
+  // "object"
+  console.log(typeof result);
+  return result;
+}
+
+
+-------------------------------------------------------------------------------------------
+
+
+Question 3: 
+
+You've started work on fixing a bug and then realised that you've accidentally made your first 
+commit on the (local) git main branch. How would you fix it so that your changes are on a different
+ branch and not on main? (You can either just describe the steps or list the commands you'd use)
+
+
+Answer: 
+
+# 1. Create a new branch at your current position (keeps the commit)
+git branch bugfix-branch
+
+# 2. Reset main to the previous commit (removes your commit from main)
+git reset --hard HEAD~1
+
+# 3. Switch to your new branch with the changes
+git checkout bugfix-branch
+
+
+Question 4: 
+
+You are working on a feature with another engineer. You try to pull the latest changes to your shared branch but receive this error.
+You have divergent branches and need to specify how to reconcile them.
+What might have caused this and how would you fix it?
+
+answers
+
+git pull --merge  # Merges remote changes into local
+
+git pull --rebase  # Replays local commits on top of remote
+
+
+
+Question 5: 
+
+Resolve the following merge conflict.
+
+and then the code
+
+import React from 'react';
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+import { Button, Stack } from 'ui';
+import dayjs from 'dayjs';
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+import { Button, Label } from 'ui';
+import type { RootState } from 'app/store';
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+import { authApi } from 'api/authApi';
+
+answers
+
+import React from 'react';
+import { Button, Stack, Label } from 'ui';
+import dayjs from 'dayjs';
+import type { RootState } from 'app/store';
+import { authApi } from 'api/authApi';
+
+Question 6 
+
+A customer reports that when they try to access the web-app, they see a blank screen. What would you do to determine where the problem lies?
+
+answer:
+
+Step 1: Check the browser console first - this quickly reveals JS errors, network failures, or CORS issues.
+Step 2: Inspect the Network tab to verify the app is loading and files (HTML, JS, CSS) are being fetched successfully.
+Step 3: Check server logs where the app is hosted (both client and server) for any deployment or runtime errors.
+
+Question 7 Imprvoe TS of this fucniton
+
+
+answer
+
+/**
+ * Sends an email to the specified address
+ * @param email - Recipient's email address
+ * @param content - Email content to send
+ * @returns Promise that resolves to true if email sent successfully
+ * @throws Error if email or content is invalid
+ */
+async function sendEmail(email: string, content: string): Promise<boolean> {
+
+  // Validate both email and content are provided
+  if (!email || !content) {
+    throw new Error('Cannot send email: Missing email or content');
+  }
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[\w.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailRegex.test(email)) {
+    throw new Error('Cannot send email: Invalid email address');
+  }
+  
+  return await emailService.connectAndSend(email, content);
+}
+
+
+Question 8:
+
+The code below uses decorators to link a JS class with a database table. Update the class by adding the correct TypeScript type for each field based on the database column type.
+
+@Table('user')
+export class User {
+  @Column({type: 'uuid'})
+  id;
+
+  @Column({type: 'varchar'})
+  name;
+
+  @Column({type: 'timestamp', nullable: true})
+  lastLogin;
+
+  @Column({type: 'int', nullable: false})
+  age;
+
+  @Column({type: 'numeric(2,3)', nullable: true})
+  height;
+}
+
+
+answer
+
+@Table('user')
+export class User {
+  @Column({type: 'uuid'})
+  id: string;
+
+  @Column({type: 'varchar'})
+  name: string;
+
+  @Column({type: 'timestamp', nullable: true})
+  lastLogin: Date | null;
+
+  @Column({type: 'int', nullable: false})
+  age: number;
+
+  @Column({type: 'numeric(2,3)', nullable: true})
+  height: number | null;
+}
+
+
+
+question 9
+
+Update the component below to provide a better user-experience to the customer when an order is placed.
+
+import React from 'react';
+
+type OrderDetails = {
+  orderEmail: string;
+  products: OrderProduct[];
+  totalPrice: number;
+}
+        
+export const OrderPlacement = ({ orderDetails, onFinish }: Props) => {
+
+  const placeOrder = async () => {
+    ordersAPI.placeOrder(orderDetails);
+    onFinish();
+  };
+
+  return <>
+    <Button onClick={placeOrder}>Submit</Button>
+  <>
+}
+
+answer
+
+import React, {useState} from 'react';
+
+// Note: Button, OrderProduct, Props, and ordersAPI are provided by the test environment
+
+type OrderDetails = {
+  orderEmail: string;
+  products: OrderProduct[];
+  totalPrice: number;
+}
+
+type OrderPlacementProps = {
+  orderDetails: OrderDetails;
+  onFinish: () => void;
+}
+        
+export const OrderPlacement = ({ orderDetails, onFinish }: OrderPlacementProps) => {
+  // Added state management for loading and error handling to improve UX
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const placeOrder = async () => {
+    setIsLoading(true);
+    setError(null); // Clear previous errors
+    
+    try {
+      await ordersAPI.placeOrder(orderDetails); // Added await to ensure order completes
+      onFinish();
+    } catch (error: any) {
+      setError("Failed to place order, retry.");
+      console.error("Order placement error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <>
+      {/* Display error message if order fails */}
+      {error && <div style={{color:"red", marginBottom:"10px"}}>{error}</div>}
+      
+      {/* Disabled button prevents duplicate submissions during loading */}
+      <Button onClick={placeOrder} disabled={isLoading}>
+        {isLoading ? "Ordering..." : "Submit"}  
+      </Button>
+    </>
+  );
+}
+
+
+Question 10: 
+
+Analyse the code below and set the comment to the color value you expect a user to see when the component is rendered.
+
+import React, { useState, useEffect } from 'react';
+
+export const ColorStatus = ({ initialColor }: { initialColor?: 'yellow' }) => {
+  const [color, setColor] = useState(initialColor ?? 'blue');
+
+  useEffect(() => {
+    setColor('red');
+  }, [initialColor])
+
+  // red
+  return <Text>{color}<Text>
+}
+
+
+question 11 
+
+
+Update the code below to make the parameters non-optional.
+
+function buildEmail(emails?: { to: string[], cc: string[] }, content?: string) {
+  if (!content) {
+    throw new Error('Missing email content');
+  }
+  return emailService.compileEmail(emails?.to, content);
+}
+
+answer
+
+function buildEmail(emails: { to: string[], cc: string[] }, content: string) {
+  return emailService.compileEmail(emails.to, content);
+}
+
+question 12
+
+You are asked to review the code below. Make any improvements to it you think are necessary.
+
+/**
+ * Return a set of email addresses from a list of users
+ */
+function getEmailAddress(user?: User): string {
+  if (user && user?.emailAddress) {
+    return user?.emailAddress;
+  }
+}
+
+function getEmailAddresses(users: User[]): string[] {
+  return users.map(user => getEmailAddress(user));
+}
+
+
+answer
+
+/**
+ * Return a user's email address
+ */
+function getEmailAddress(user: User): string | undefined {
+  return user.emailAddress;  // Added semicolon
+}
+
+/**
+ * Returns a list of email addresses from a list of users
+ */
+function getEmailAddresses(users: User[]): string[] {
+  return users.map(user => getEmailAddress(user)).filter((email): email is string => email !== undefined);
+}
+
+
+uestion 12
+
+improve this function 
+
+const convertName = (dbName: string) =>
+  dbName
+  .replace(/[_-]/g, ' ')
+  .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase());
+
+
+  
+answer
+
+const convertName = (dbName: string): string => {
+  if(!dbName || !dbName.trim()){
+    return '';
+  }
+  return dbName
+    .replace(/[_-]/g, ' ')
+    .replace(/(?:^|\s)\S/g, (char) => char.toUpperCase())
+    .trim();
+}
+
+
+
+question 13
+ 
+ In the following code, write the comment describing why the developer chose to use a try-finally block.
+
+async function markUserLoginTime(id: string) {
+  const conn = new DBConnection();
+  try {
+    await conn.update('user', { 
+      where: { id }, 
+      values: { last_login: sqlFn('NOW()') },
+    });
+  } finally {
+    // 
+    conn.release();
+  }
+}
+
+answer
+
+    // Releases connection back to the pool, whether the update fails or succeeds
+    // If this was a catch, it would only release connection on failure
+
+
+
+question 14
+
+function getPrivilegeLevel(name: string) {
+  const level = {
+    'Jo': 'Admin',
+    'Kai': 'Admin',
+    'Francis': 'Moderator',
+  }[name] ?? 'User';
+
+  // User typed: "constructor" (or similar built-in property name like "toString")
+  // Object literals inherit these properties, so level becomes a function instead of undefined.
+  // Since it's not undefined, the ?? fallback doesn't apply, and .toLowerCase() fails on a function.
+
+  return level.toLowerCase();
+}
+
+
+question 15
+
+You are asked to review this function. Update the code and/or add code comments describing what needs fixing.
+
+async function sendPasswordReset(email?: string) {
+  const tx = new Transaction();
+  tx.begin();
+  const { id } = await tx.query(`SELECT id from user WHERE email=${email}`);
+  const code = crypto.randomUUID();
+  try {
+    await tx.insert('pwd_reset_codes', { id, code });
+    await tx.update('user', { id }, { last_password_reset: 'NOW()' });
+  } finally {
+    tx.commit();
+  }
+}
+
+answer
+
+// Issues identified and fixed:
+// - SQL injection vulnerability (fixed with parameterized query)
+// - Email should be required for password reset
+// - Proper error handling with rollback on failure
+// - Validate user exists before proceeding
+// - Transaction logic: commit on success, rollback on error
+
+async function sendPasswordReset(email: string) {
+
+  // Validate email is provided
+  if(!email || !email.trim()){
+    throw new Error("Email is required");
+  }
+  
+  const tx = new Transaction();
+  await tx.begin();
+  
+  try {
+    // Use parameterized query to prevent SQL injection
+    const result = await tx.query('SELECT id FROM user WHERE email = ?', [email]);
+
+    // Validate user exists
+    if(!result || !result.id){
+      throw new Error("User not found");
+    }
+  
+    const {id} = result;
+    const code = crypto.randomUUID();
+    
+    await tx.insert('pwd_reset_codes', { id, code });
+    await tx.update('user', { id }, { last_password_reset: 'NOW()' });
+    
+    await tx.commit();
+
+    // TODO: Send actual password reset email with code
+    // await emailService.sendResetEmail(email, code);
+    
+  } catch (error){
+    // Rollback transaction on error
+    await tx.rollback();
+    throw error;
+  }
+}

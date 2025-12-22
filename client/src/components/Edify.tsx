@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function Edify() {
-  return <div className="text-black">Edifyc</div>;
-}
+export const ColorStatus = ({ initialColor }: { initialColor?: "yellow" }) => {
+  const [color, setColor] = useState(initialColor ?? "blue");
 
-export default Edify;
+  useEffect(() => {
+    setColor("red");
+  }, [initialColor]);
+
+  // red
+  return (
+    <>
+      <div className="w-full h-full flex justify-center items-center">
+        <p className="text-black">hello</p>
+        <p className="text-black">{color}</p>
+      </div>
+    </>
+  );
+};
